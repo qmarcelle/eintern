@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+<tx:annotation-driven transaction-manager="transactionManager"/>
+<context:component-scan base-package="com.eintern.example"/>
+	<!-- configures JDBC connection -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="classpath:hibernate/jdbc.properties" scope="singleton" />
+
+	<bean id="dataSource"
+		class="oracle.jdbc.pool.OracleDataSource" destroy-method="close"
+		p:URL="${jdbc.databaseurl}" p:user="${jdbc.username}"
+		p:password="${jdbc.password}" /><!-- scope="singleton" /> -->
+<!-- p:class="${jdbc.driverClassName}" -->
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- <property name="dataSource" ref="dataSource" /> -->
+		<property name="configLocation">
+			<value>classpath:hibernate/hibernate.cfg.xml</value>
+		</property>
+		<property name="dataSource" ref="dataSource"/>
+		<property name="packagesToScan">
+		<list>
+		<value>com.eintern.example.entity</value>
+		</list>
+			
+		</property>
+		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props> 
+		</property>
+	</bean>
+
+
+<bean id="expenseDao" class="com.eintern.example.dao.ExpenseDaoImpl"/>
+
+
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+
+
+	<bean id="converter"
+		class="com.eintern.example.utils.StringToDate">
+	</bean>
+</beans>

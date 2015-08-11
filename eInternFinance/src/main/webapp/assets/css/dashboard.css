@@ -1,0 +1,124 @@
+/*
+ * Full-page application style
+ */
+
+body.application {
+  background: #f2f2f2;
+  padding: 60px 20px 0;
+}
+body.application > .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+body.application div[class^="col-"] {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+body.application div[class^="col-"] div[class^="col-"] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+body.application hr {
+  border-color: #d7d7d7;
+  margin: 10px 0;
+}
+
+
+/* chart stuff */
+.chart-legend ul {
+    list-style: none;
+    width: 100%;
+    margin: 30px auto 0;
+}
+.chart-legend li {
+    text-indent: 16px;
+    line-height: 24px;
+    position: relative;
+    font-weight: 200;
+    display: block;
+    float: left;
+    width: 50%;
+    font-size: 0.8em;
+}
+.chart-legend  li:before {
+    display: block;
+    width: 10px;
+    height: 16px;
+    position: absolute;
+    left: 0;
+    top: 3px;
+    content: "";
+}
+.projects:before { background-color: #33CC33; }
+.travel:before { background-color: #0066FF; }
+.resources:before { background-color: #FFFF00; }
+.utilities:before { background-color: #FF0000; }
+.marketing:before { background-color: #FF6699; }
+.other:before { background-color: #CC33FF; }
+
+.consultations:before { background-color: #33CC33; }
+.intensives:before { background-color: #0066FF; }
+.media-sales:before { background-color: #FFFF00; }
+.seminars:before { background-color: #FF0000; }
+
+
+
+/* .navbar-inverse {
+  background-color: #3d4a57;
+  border-color: #333;
+}
+.navbar-inverse .navbar-nav > li > a,
+.navbar .navbar-brand {
+  color: #fbfbfb;
+  text-decoration: none;
+}
+
+.main-nav > li > a:hover {
+  border-bottom: 2px solid transparent;
+  -webkit-transition: border 300ms ease;
+  -o-transition: border 300ms ease;
+  transition: border 300ms ease;
+  border-bottom-color: white;
+} */
+
+.return-link, .return-link:focus, .return-link:hover {
+  text-decoration: none;
+}
+
+.canvas-container {
+  padding-left: 250px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-right: 200px;
+}
+
+
+.chart-wrapper {
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.chart-wrapper .chart-title {
+  border-bottom: 1px solid #d7d7d7;
+  color: #666;
+  font-size: 14px;
+  font-weight: 200;
+  padding: 7px 10px 4px;
+}
+
+.chart-wrapper .chart-stage {
+  /*min-height: 240px;*/
+  overflow: hidden;
+  padding: 5px 10px;
+  position: relative;
+}
+
+.chart-wrapper .chart-notes {
+  background: #fbfbfb;
+  border-top: 1px solid #e2e2e2;
+  color: #808080;
+  font-size: 12px;
+  padding: 8px 10px 5px;
+}
